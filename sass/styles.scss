@@ -1,0 +1,180 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --SoftRed: hsl(10, 79%, 65%);
+  --Cyan: hsl(186, 34%, 60%);
+  --MediumBrown: hsl(28, 10%, 53%);
+  --DarkBrown: hsl(25, 47%, 15%);
+  --LightOrange: hsl(33, 100%, 98%);
+  --Cream: hsl(27, 66%, 92%);
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-color: var(--Cream);
+}
+
+.card__main-container {
+  display: grid;
+  gap: 2rem;
+  width: 80%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em 2em;
+  border-radius: 10px;
+  background-color: var(--SoftRed);
+  color: #fff;
+}
+
+main {
+  display: grid;
+  gap: 2rem;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 10px;
+
+  .heading {
+    text-align: center;
+    color: var(--DarkBrown);
+  }
+
+  .graphs {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 10px;
+
+    .bar {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 5px;
+      background-color: var(--SoftRed);
+      position: relative;
+      transition: 500ms ease;
+      cursor: pointer;
+
+      .day {
+        position: absolute;
+        bottom: -25px;
+        left: 6px;
+      }
+    }
+    .bar:hover {
+      background-color: hsl(10, 79%, 75%);
+    }
+    .bar:nth-child(2) {
+      height: 5rem;
+    }
+    .bar:nth-child(3) {
+      background-color: var(--Cyan);
+      height: 7rem;
+    }
+    .bar:nth-child(3):hover {
+      background-color: hsl(186, 34%, 75%);
+    }
+    .bar:nth-child(4) {
+      height: 4rem;
+    }
+    .bar:nth-child(5) {
+      height: 3rem;
+    }
+    .bar:nth-child(6) {
+      height: 5.5rem;
+    }
+    .bar:nth-child(7) {
+      height: 3.5rem;
+    }
+
+    .bar::before {
+      display: none;
+      content: attr(data-tooltip);
+      width: 33px;
+      height: 18px;
+      background-color: var(--DarkBrown);
+      color: #fff;
+      position: absolute;
+      top: -25px;
+      left: -2px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .bar:hover::before {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  border-top: 1px solid var(--MediumBrown);
+  padding-top: 1em;
+
+  &__left-content {
+    display: grid;
+    gap: 5px;
+
+    p {
+      font-size: 13px;
+      color: var(--MediumBrown);
+    }
+
+    .total-amount {
+      font-size: 2em;
+      font-weight: 700;
+      color: var(--DarkBrown);
+    }
+  }
+
+  &__right-content {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 5px;
+
+    .increase-percentage {
+      font-weight: 700;
+      color: var(--DarkBrown);
+      text-align: end;
+    }
+
+    p {
+      font-size: 13px;
+      color: var(--MediumBrown);
+    }
+  }
+}
+
+@media (min-width: 600px) {
+  .card__main-container {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card__main-container {
+    width: 30%;
+  }
+}
+
+@media (min-width: 1100px) {
+  .card__main-container {
+    width: 25%;
+  }
+}
